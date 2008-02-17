@@ -1,0 +1,49 @@
+---
+name: CGI-LZE-Blog
+version: 0.24
+author:
+  - 'Dirk Lindner <lindnerei@o2online.de>'
+abstract: LZE Weblog
+license: lgpl
+resources:
+  license: http://opensource.org/licenses/artistic-license.php
+requires:
+  CGI: 3.29
+  CGI::LZE: 0.24
+  CGI::QuickForm: 1.93
+  DBI: 1.5
+  DBI::LZE::Database: 0.24
+  HTML::LZE::BBCODE: 0.24
+  HTML::Menu::TreeView: 0.84
+  HTML::Parser: 3.56
+  HTML::Template::LZE::Editor: 0.24
+  HTML::Template::LZE::Main: 0.24
+  HTML::Template::LZE::Pages: 0.24
+  HTML::Template::LZE::TabWidget: 0.24
+  HTML::Template::LZE::Template: 0.24
+  HTML::Template::LZE::Window: 0.24
+  MD5: 2.03
+  Module::Build: 0.2808
+  Syntax::Highlight::Perl: 1
+  Test::More: 0.7
+  Test::Pod: 1.26
+  Test::Pod::Coverage: 0.55
+  Test::Signature: 1.1
+provides:
+  CGI::LZE::Blog:
+    file: lib/CGI/LZE/Blog.pm
+    version: 0.24
+  DBI::LZE::Database:
+    file: lib/DBI/LZE/Database.pm
+    version: 0.24
+  DBI::LZE::Database::db:
+    file: lib/DBI/LZE/Database.pm
+  DBI::LZE::Database::st:
+    file: lib/DBI/LZE/Database.pm
+  HTML::Template::LZE::Thread:
+    file: lib/HTML/Template/LZE/Thread.pm
+    version: 0.24
+generated_by: Module::Build version 0.2808
+meta-spec:
+  url: http://module-build.sourceforge.net/META-spec-v1.2.html
+  version: 1.2
