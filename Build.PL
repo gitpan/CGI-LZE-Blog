@@ -32,9 +32,9 @@ sub ACTION_build {
 sub ACTION_install {
         my $self = shift;
         my %conf = ( name => $self->{'properties'}{dbname}, host => $self->{'properties'}{sqlhost}, user => $self->{'properties'}{dbuser},);
-        print $self->{'properties'}{dbpass};
         $conf{password} = $self->{'properties'}{dbpass} unless $self->{'properties'}{dbpass} =~/^$/;
-        my $database = new DBI::LZE(\%conf);
+        my $database = new DBI::LZE();
+        $database->initDB(\%conf);
         open(IN, "extra/install.sql") or die $!;
         local $/;
                 my $file = <IN>;
@@ -58,7 +58,8 @@ sub ACTION_uninstall {
         if(defined $self->{'properties'}{dbpass} ){
         $conf{password} = $self->{'properties'}{dbpass} unless $self->{'properties'}{dbpass} =~/^$/;
         }
-        my $database = new DBI::LZE(\%conf);
+        my $database = new DBI::LZE();
+        $database->initDB(\%conf);
         open(IN, "extra/uninstall.sql") or die $!;
         local $/;
         my $file = <IN>;
@@ -114,20 +115,19 @@ my $inctance = $class->new(
         module_name => 'CGI::LZE::Blog',
         requires    => {
                      'Test::More'                     => 0.7,
-                     'Test::Signature'                => 1.10,
                      'Module::Build'                  => 0.2808,
                      'Test::Pod'                      => 1.26,
                      'Test::Pod::Coverage'            => 0.55,
-                     'CGI::LZE'                       => 0.24,
-                     'DBI::LZE::Database'             => 0.24,
-                     'HTML::Template::LZE::Main'      => 0.24,
-                     'HTML::Template::LZE::TabWidget' => 0.24,
-                     'HTML::Template::LZE::Window'    => 0.24,
-                     'HTML::Template::LZE::Pages'     => 0.24,
-                     'HTML::Template::LZE::Template'  => 0.24,
-                     'HTML::Template::LZE::Editor'    => 0.24,
-                     'HTML::LZE::BBCODE'              => 0.24,
-                     'HTML::Menu::TreeView'           => 0.84,
+                     'CGI::LZE'                       => 0.25,
+                     'DBI::LZE::Database'             => 0.25,
+                     'HTML::Template::LZE::Main'      => 0.25,
+                     'HTML::Template::LZE::TabWidget' => 0.25,
+                     'HTML::Template::LZE::Window'    => 0.25,
+                     'HTML::Template::LZE::Pages'     => 0.25,
+                     'HTML::Template::LZE'  => 0.25,
+                     'HTML::Template::LZE::Editor'    => 0.25,
+                     'HTML::LZE::BBCODE'              => 0.25,
+                     'HTML::Menu::TreeView'           => 0.85,
                      'CGI::QuickForm'                 => 1.93,
                      'DBI'                            => 1.50,
                      'CGI'                            => 3.29,
@@ -139,7 +139,6 @@ my $inctance = $class->new(
         dist_abstract      => "LZE Weblog",
         license            => "lgpl",
         create_makefile_pl => 'passthrough',
-        #             sign               => 1,
 );
 
 use Cwd;
@@ -236,7 +235,7 @@ $settings = {
              scriptAlias   => $inctance->{properties}{alias},
              uploads       => {maxlength => 2003153, path => "$inctance->{properties}{htd}/downloads/", chmod => 0644, enabled => 1},
              tree      => {navigation => "$inctance->{properties}{cgi}config/tree.pl", links => "$inctance->{properties}{cgi}config/links.pl"},
-             version   => '0.24',
+             version   => '0.25',
              session   => "$inctance->{properties}{cgi}/config/session.pl",
              actions   => "$inctance->{properties}{cgi}/config/actions.pl",
              translate => "$inctance->{properties}{cgi}/config/translate.pl",

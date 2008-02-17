@@ -136,7 +136,7 @@ Cpan Module:<br/>
 <li>HTML::Template::LZE::TabWidget</li>
 <li>HTML::Template::LZE::Window</li>
 <li>HTML::Template::LZE::Pages</li>
-<li>HTML::Template::LZE::Template</li>
+<li>HTML::Template::LZE</li>
 <li>HTML::LZE::BBCODE</li>
 <li>HTML::Parser</li>
 </ul>

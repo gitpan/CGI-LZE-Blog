@@ -1,4 +1,4 @@
-CGI::LZE::Blog version 0.24
+CGI::LZE::Blog version 0.25
 ======================
 
 The README is used to introduce the module and provide instructions on
@@ -47,19 +47,18 @@ DEPENDENCIES
 This module requires these other modules and libraries:
 
 'Test::More'=>0.7,
-'Test::Signature'=>1.10,
 'Module::Build'=>0.2808,
 'Test::Pod'=>1.26,
 'Test::Pod::Coverage'=>0.55,
-'CGI::LZE'=>0.24,
-'DBI::LZE::Database'=>0.24,
-'HTML::Template::LZE::Main'=>0.24,
-'HTML::Template::LZE::TabWidget'=>0.24,
-'HTML::Template::LZE::Window'=>0.24,
-'HTML::Template::LZE::Pages'=>0.24,
-'HTML::Template::LZE::Template'=>0.24,
-'HTML::Template::LZE::Editor'=>0.24,
-'HTML::LZE::BBCODE'=>0.24,
+'CGI::LZE'=>0.25,
+'DBI::LZE::Database'=>0.25,
+'HTML::Template::LZE::Main'=>0.25,
+'HTML::Template::LZE::TabWidget'=>0.25,
+'HTML::Template::LZE::Window'=>0.25,
+'HTML::Template::LZE::Pages'=>0.25,
+'HTML::Template::LZE::Template'=>0.25,
+'HTML::Template::LZE::Editor'=>0.25,
+'HTML::LZE::BBCODE'=>0.25,
 'HTML::Menu::TreeView'=>0.84,
 'CGI::QuickForm'=>1.93,
 'DBI'=>1.50,

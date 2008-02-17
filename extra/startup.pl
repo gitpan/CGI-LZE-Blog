@@ -8,7 +8,7 @@ use CGI::LZE::Settings;
 use DBI::LZE qw(:all);
 use HTML::Menu::TreeView qw(:all);
 loadSettings("%PATH%/config/config.pl");
-use HTML::Template::LZE::Template;
+use HTML::Template::LZE;
 use HTML::Template::LZE::Window qw(:all);
 my %parameter = (path => "%PATH%/templates/", style => "Crystal", server => "%host%",);
 use HTML::Template::LZE::Main qw(:all);

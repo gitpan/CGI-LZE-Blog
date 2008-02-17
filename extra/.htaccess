@@ -18,13 +18,10 @@ RewriteRule ^delete.html(.+) /%ALIAS%/lze.pl?action=delete$1
 RewriteRule  (.+)/(.+)/fulltext\.html(.+) /%ALIAS%/lze.pl?action=fulltext&von=$1&bis=$2$3 [PT]
 RewriteRule  (.+)/(.+)/showEntry\.html(.+) /%ALIAS%/lze.pl?action=showEntry&von=$1&bis=$2$3 [PT]
 RewriteRule ^reallydelete.html(.+) /%ALIAS%/lze.pl?action=reallydelete$1
-RewriteRule ^history.html$  /%ALIAS%/content.pl?action=news
 RewriteRule ^neues.html$ /%ALIAS%/lze.pl?action=news
-RewriteRule ^treeview/index.html$  http://treeview/
 RewriteRule ^viewrss.html$  /%ALIAS%/lze.pl?action=viewrss
 RewriteRule ^showrss(.*)\.html$ /%ALIAS%/lze.pl?action=viewrss&url=$1 [PT]
 RewriteRule ^impressum.html$ /%ALIAS%/lze.pl?action=impressum
-RewriteRule ^help.html /%ALIAS%/lze.pl?action=help
 RewriteRule ^links.html /%ALIAS%/lze.pl?action=links
 RewriteRule ^login.html /%ALIAS%/lze.pl?action=login
 RewriteRule ^logout.html /%ALIAS%/lze.pl?action=logout

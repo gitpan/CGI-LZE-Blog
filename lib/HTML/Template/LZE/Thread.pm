@@ -29,7 +29,7 @@ use vars qw(
 @HTML::Template::LZE::Thread::EXPORT = qw(showThread);
 @ISA                                 = qw(Exporter);
 
-$HTML::Template::LZE::Thread::VERSION = '0.24';
+$HTML::Template::LZE::Thread::VERSION = '0.25';
 
 $DefaultClass = 'HTML::Template::LZE::Thread' unless defined $HTML::Template::LZE::Thread::DefaultClass;
 
