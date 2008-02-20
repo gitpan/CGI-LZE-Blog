@@ -1,7 +1,6 @@
 package HTML::Template::LZE::Thread;
-
-# use strict;
-# use warnings;
+use strict;
+use warnings;
 use CGI::LZE::Blog;
 use HTML::Template::LZE::Window;
 use HTML::LZE::BBCODE;
@@ -29,7 +28,7 @@ use vars qw(
 @HTML::Template::LZE::Thread::EXPORT = qw(showThread);
 @ISA                                 = qw(Exporter);
 
-$HTML::Template::LZE::Thread::VERSION = '0.25';
+$HTML::Template::LZE::Thread::VERSION = '0.26';
 
 $DefaultClass = 'HTML::Template::LZE::Thread' unless defined $HTML::Template::LZE::Thread::DefaultClass;
 

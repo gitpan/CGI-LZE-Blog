@@ -20,7 +20,7 @@ use DBI::LZE qw(:all $dbh $dsn);
         'independent' => [qw(tableLength tableExists initDB useexecute void fetch_hashref fetch_AoH fetch_array updateModules deleteexecute editexecute addexecute)],
         'lze'         => [qw(addUser hasAcount isMember createMenu catright topicright right getAction checkPass checkSession setSid getName rss readMenu deleteMessage reply editMessage addMessage rewrite)],
 );
-$DBI::LZE::Database::VERSION = '0.25';
+$DBI::LZE::Database::VERSION = '0.26';
 $mod_rewrite                 = 0;
 
 =head1 NAME

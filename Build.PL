@@ -9,7 +9,6 @@ use vars qw($settings);
 use CGI::LZE::Settings qw(loadSettings);
 loadSettings("cgi-bin/config/settings.pl");
 *settings = \$CGI::LZE::Settings::settings;
-use DBI::LZE;
 
 sub ACTION_build {
         my $self = shift;
@@ -33,6 +32,8 @@ sub ACTION_install {
         my $self = shift;
         my %conf = ( name => $self->{'properties'}{dbname}, host => $self->{'properties'}{sqlhost}, user => $self->{'properties'}{dbuser},);
         $conf{password} = $self->{'properties'}{dbpass} unless $self->{'properties'}{dbpass} =~/^$/;
+        eval 'use DBI::LZE qw(all)';
+        unless($@){
         my $database = new DBI::LZE();
         $database->initDB(\%conf);
         open(IN, "extra/install.sql") or die $!;
@@ -40,6 +41,7 @@ sub ACTION_install {
                 my $file = <IN>;
         foreach my $sql (split /;\n/, $file) {
                 $database->void($sql . ";");
+        }
         }
         $self->SUPER::ACTION_install;
              if($settings->{cgi}{mod_rewrite}) {
@@ -58,13 +60,16 @@ sub ACTION_uninstall {
         if(defined $self->{'properties'}{dbpass} ){
         $conf{password} = $self->{'properties'}{dbpass} unless $self->{'properties'}{dbpass} =~/^$/;
         }
+        eval 'use DBI::LZE qw(all)';
+        unless($@){
         my $database = new DBI::LZE();
         $database->initDB(\%conf);
         open(IN, "extra/uninstall.sql") or die $!;
         local $/;
-        my $file = <IN>;
+                my $file = <IN>;
         foreach my $sql (split /;\n/, $file) {
                 $database->void($sql . ";");
+        }
         }
 }
 
@@ -114,26 +119,27 @@ my $inctance = $class->new(
         },
         module_name => 'CGI::LZE::Blog',
         requires    => {
-                     'Test::More'                     => 0.7,
-                     'Module::Build'                  => 0.2808,
-                     'Test::Pod'                      => 1.26,
-                     'Test::Pod::Coverage'            => 0.55,
-                     'CGI::LZE'                       => 0.25,
-                     'DBI::LZE::Database'             => 0.25,
-                     'HTML::Template::LZE::Main'      => 0.25,
-                     'HTML::Template::LZE::TabWidget' => 0.25,
-                     'HTML::Template::LZE::Window'    => 0.25,
-                     'HTML::Template::LZE::Pages'     => 0.25,
-                     'HTML::Template::LZE'  => 0.25,
-                     'HTML::Template::LZE::Editor'    => 0.25,
-                     'HTML::LZE::BBCODE'              => 0.25,
-                     'HTML::Menu::TreeView'           => 0.85,
-                     'CGI::QuickForm'                 => 1.93,
-                     'DBI'                            => 1.50,
-                     'CGI'                            => 3.29,
-                     'HTML::Parser'                   => 3.56,
-                     'Syntax::Highlight::Perl'        => 1.00,
-                     'MD5'                            => 2.03,
+                     'Test::More'                     => ">=0.7",
+                     'Module::Build'                  => ">=0.2808",
+                     'Test::Pod'                      => ">=1.26",
+                     'Test::Pod::Coverage'            => ">=0.55",
+                     'CGI::LZE'                       => ">=0.25",
+                     'DBI::LZE'                       => ">=0.25",
+                     'DBI::LZE::Database'             => ">=0.25",
+                     'HTML::Template::LZE::Main'      => ">=0.25",
+                     'HTML::Template::LZE::TabWidget' => ">=0.25",
+                     'HTML::Template::LZE::Window'    => ">=0.25",
+                     'HTML::Template::LZE::Pages'     => ">=0.25",
+                     'HTML::Template::LZE'            => ">=0.25",
+                     'HTML::Template::LZE::Editor'    => ">=0.25",
+                     'HTML::LZE::BBCODE'              => ">=0.25",
+                     'HTML::Menu::TreeView'           => ">=0.85",
+                     'CGI::QuickForm'                 => ">=1.93",
+                     'DBI'                            => ">=1.50",
+                     'CGI'                            => ">=3.29",
+                     'HTML::Parser'                   => ">=3.56",
+                     'Syntax::Highlight::Perl'        => ">=1.00",
+                     'MD5'                            => ">=2.03",
         },
         ($] >= 5.005 ? (AUTHOR => 'Dirk Lindner <lze@cpan.org>') : ()),
         dist_abstract      => "LZE Weblog",
@@ -235,7 +241,7 @@ $settings = {
              scriptAlias   => $inctance->{properties}{alias},
              uploads       => {maxlength => 2003153, path => "$inctance->{properties}{htd}/downloads/", chmod => 0644, enabled => 1},
              tree      => {navigation => "$inctance->{properties}{cgi}config/tree.pl", links => "$inctance->{properties}{cgi}config/links.pl"},
-             version   => '0.25',
+             version   => '0.26',
              session   => "$inctance->{properties}{cgi}/config/session.pl",
              actions   => "$inctance->{properties}{cgi}/config/actions.pl",
              translate => "$inctance->{properties}{cgi}/config/translate.pl",

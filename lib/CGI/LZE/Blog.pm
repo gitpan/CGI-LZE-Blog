@@ -1,9 +1,6 @@
 package CGI::LZE::Blog;
-
-# use strict;
-# use warnings;
-# use diagnostics;
-no warnings qw(uninitialized redefine);
+use strict;
+use warnings;
 use DBI::LZE::Database qw(:all);
 use HTML::Template::LZE::Main qw(:all);
 use HTML::Template::LZE::TabWidget qw(:all);
@@ -49,7 +46,7 @@ use vars qw(
 @CGI::LZE::Blog::EXPORT = qw(action Body maxlength openFile );
 @ISA                    = qw(Exporter CGI::LZE);
 
-$CGI::LZE::Blog::VERSION = '0.25';
+$CGI::LZE::Blog::VERSION = '0.26';
 $mod_perl = ($ENV{MOD_PERL}) ? 1 : 0;
 
 local $^W = 0;
